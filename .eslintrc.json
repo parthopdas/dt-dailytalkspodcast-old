@@ -5,12 +5,12 @@
     "node": true
   },
   "extends": [
-    "airbnb-base",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -30,6 +30,20 @@
       }
     ],
     "no-console": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "tabWidth": 2,
+        "comments": 120,
+        "ignoreComments": false,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ]
   }
 }
