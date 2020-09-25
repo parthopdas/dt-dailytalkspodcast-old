@@ -1,6 +1,12 @@
 {
   "devDependencies": {
     "@types/argparse": "^1.0.38",
+    "@types/axios": "^0.14.0",
+    "@types/cheerio": "^0.22.22",
+    "@types/email-validator": "^1.0.6",
+    "@types/lodash": "^4.14.161",
+    "@types/node": "^14.11.2",
+    "@types/superagent": "^4.1.10",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "babel-eslint": "^10.1.0",
@@ -17,6 +23,13 @@
   },
   "dependencies": {
     "argparse": "^1.0.10",
-    "moment": "^2.29.0"
+    "axios": "^0.20.0",
+    "cheerio": "^1.0.0-rc.3",
+    "email-validator": "^2.0.4",
+    "fast-xml-parser": "^3.17.4",
+    "iso-639-2": "^2.0.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.0",
+    "superagent": "^6.1.0"
   }
 }

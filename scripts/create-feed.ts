@@ -1,7 +1,8 @@
-import { j2xParser } from 'fast-xml-parser'
 import { readFileSync, writeFileSync } from 'fs'
 import * as moment from 'moment'
 import { ArgumentParser } from 'argparse'
+import * as axios from 'axios'
+import * as cheerio from 'cheerio'
 import { Podcast, Episode } from './interfaces'
 
 const argparser = new ArgumentParser({
@@ -9,12 +10,12 @@ const argparser = new ArgumentParser({
   addHelp: true,
   description:
     "Create an RSS/XML feed file using a JSON metadata file. The metadata file specified via --input should be in the format of the 'Podcast' interface.",
-});
+})
 
 argparser.addArgument(['-i', '--input'], {
   required: true,
-  help: 'Input data file (JSON).'
-});
+  help: 'Input data file (JSON).',
+})
 argparser.addArgument(['-o', '--output'], {
   required: true,
   help: 'Output RSS/XML file',
@@ -22,13 +23,13 @@ argparser.addArgument(['-o', '--output'], {
 
 const args = argparser.parseArgs()
 
-const podcast: Podcast = JSON.parse(readFileSync(args['input'], 'utf8'));
+const podcast: Podcast = JSON.parse(readFileSync(args.input, 'utf8'))
 
 const feed = {
   rss: {
     '@_version': '2.0',
     '@_xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
-    //'@_xmlns:sy': 'http://purl.org/rss/1.0/modules/syndication/',,
+    // '@_xmlns:sy': 'http://purl.org/rss/1.0/modules/syndication/',,
     '@_xmlns:atom': 'http://www.w3.org/2005/Atom',
     '@_xmlns:itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
     '@_xmlns:googleplay': 'http://www.google.com/schemas/play-podcasts/1.0',
@@ -67,9 +68,8 @@ const feed = {
       ...(podcast.type && { 'itunes:type': podcast.type }),
       // TODO: reactivate once needed
       // ...(podcast.complete && { 'itunes:complete': podcast.complete }),
-
       lastBuildDate: moment.utc().format('ddd, DD MMM YYYY HH:mm:ss ZZ'),
-      item: podcast.episodes.map(episode => ({
+      item: podcast.episodes.map((episode: Episode) => ({
         guid: {
           '@_isPermaLink': false,
           '#text': episode.guid,
@@ -99,10 +99,39 @@ const feed = {
   },
 }
 
-const parser = new j2xParser({
-  ignoreAttributes: false,
-  format: true,
-})
+const fethHtml = async (url: string) => {
+  try {
+    const { data } = await axios.default.get(url)
+    return data
+  } catch {
+    console.error(`ERROR: An error occurred while trying to fetch the URL: ${url}`)
+  }
 
-const xml = parser.parse(feed)
-writeFileSync(args.output, `<?xml version="1.0" encoding="UTF-8"?>\n${xml}`)
+  return null
+}
+
+const extractDeal = (els: any) => {
+  return els.toString()
+}
+
+const scrapSteam = async () => {
+  const steamUrl = 'https://www.dhammatalks.org/mp3_index.html'
+
+  const html = await fethHtml(steamUrl)
+
+  const selector = cheerio.load(html)
+
+  const results = selector('body').find('#search_result_container > #search_resultsRows > a')
+
+  const deals = results
+    .map((idx, el) => {
+      const elementSelector = selector(el)
+      return extractDeal(elementSelector)
+    })
+    .get()
+
+  return deals
+}
+
+scrapSteam()
+writeFileSync(args.output, `<?xml version="1.0" encoding="UTF-8"?>\n${feed}`)

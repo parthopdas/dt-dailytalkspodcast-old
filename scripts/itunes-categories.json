@@ -1,0 +1,127 @@
+{
+  "Arts": [
+    "Books",
+    "Design",
+    "Fashion &amp; Beauty",
+    "Food",
+    "Performing Arts",
+    "Visual Arts"
+  ],
+  "Business": [
+    "Careers",
+    "Entrepreneurship",
+    "Investing",
+    "Management",
+    "Marketing",
+    "Non-Profit"
+  ],
+  "Comedy": [
+    "Comedy Interviews",
+    "Improv",
+    "Stand-Up"
+  ],
+  "Education": [
+    "Courses",
+    "How To",
+    "Language Learning",
+    "Self-Improvement"
+  ],
+  "Fiction": [
+    "Comedy Fiction",
+    "Drama",
+    "Science Fiction"
+  ],
+  "Government": [],
+  "History": [],
+  "Health &amp; Fitness": [
+    "Alternative Health",
+    "Fitness",
+    "Medicine",
+    "Mental Health",
+    "Nutrition",
+    "Sexuality"
+  ],
+  "Kids &amp; Family": [
+    "Education for Kids",
+    "Parenting",
+    "Pets &amp; Animals",
+    "Stories for Kids"
+  ],
+  "Leisure": [
+    "Animation &amp; Manga",
+    "Automotive",
+    "Aviation",
+    "Crafts",
+    "Games",
+    "Hobbies",
+    "Home &amp; Garden",
+    "Video Games"
+  ],
+  "Music": [
+    "Music Commentary",
+    "Music History",
+    "Music Interviews"
+  ],
+  "News": [
+    "Business News",
+    "Daily News",
+    "Entertainment News",
+    "News Commentary",
+    "Politics",
+    "Sports News",
+    "Tech News"
+  ],
+  "Religion &amp; Spirituality": [
+    "Buddhism",
+    "Christianity",
+    "Hinduism",
+    "Islam",
+    "Judaism",
+    "Religion",
+    "Spirituality"
+  ],
+  "Science": [
+    "Astronomy",
+    "Chemistry",
+    "Earth Sciences",
+    "Life Sciences",
+    "Mathematics",
+    "Natural Sciences",
+    "Nature",
+    "Physics",
+    "Social Sciences"
+  ],
+  "Society &amp; Culture": [
+    "Documentary",
+    "Personal Journals",
+    "Philosophy",
+    "Places &amp; Travel",
+    "Relationships"
+  ],
+  "Sports": [
+    "Baseball",
+    "Basketball",
+    "Cricket",
+    "Fantasy Sports",
+    "Football",
+    "Golf",
+    "Hockey",
+    "Rugby",
+    "Running",
+    "Soccer",
+    "Swimming",
+    "Tennis",
+    "Volleyball",
+    "Wilderness",
+    "Wrestling"
+  ],
+  "Technology": [],
+  "True Crime": [],
+  "TV &amp; Film": [
+    "After Shows",
+    "Film History",
+    "Film Interviews",
+    "Film Reviews",
+    "TV Reviews"
+  ]
+}
